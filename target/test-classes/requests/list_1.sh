@@ -1,0 +1,1 @@
+curl -X GET -k "http://localhost:8089/api/v1/files/list?userId=1"

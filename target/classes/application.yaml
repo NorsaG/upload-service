@@ -1,0 +1,18 @@
+server:
+  port: 8089
+
+upload:
+  max-threads: 16
+  hashAlgo: "MD5"
+
+spring:
+  mvc:
+    async:
+      request-timeout: 600s
+  data:
+    mongodb:
+      uri: "mongodb://appuser:app_pass@localhost:27017/upload?authSource=upload"
+  servlet:
+    multipart:
+      max-file-size: 100GB
+      max-request-size: 100GB

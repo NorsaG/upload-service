@@ -1,0 +1,1 @@
+curl -k http://localhost:8089/api/v1/files/3c1fcc8f-1c27-4db6-9dc5-5ce17dadf4ad/download

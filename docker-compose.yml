@@ -1,0 +1,30 @@
+services:
+  mongodb:
+    image: mongo:7.0
+    container_name: mongodb
+    restart: always
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: upload_admin
+      MONGO_INITDB_DATABASE: upload
+    volumes:
+      - mongo-data:/data/db
+      - ./init.js:/docker-entrypoint-initdb.d/init.js:ro
+
+  upload-service:
+    build: .
+    container_name: upload-service
+    restart: always
+    ports:
+      - "8089:8089"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      MONGO_URI: mongodb://admin:upload_admin@mongodb:27017/upload?authSource=admin
+      SPRING_DATA_MONGODB_URI: mongodb://admin:upload_admin@mongodb:27017/upload?authSource=admin
+    depends_on:
+      - mongodb
+
+volumes:
+  mongo-data:

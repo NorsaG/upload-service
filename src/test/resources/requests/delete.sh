@@ -1,0 +1,1 @@
+curl -X DELETE -k "http://localhost:8089/api/v1/files/dccaf7b1-9869-441d-a43a-44831c0f6aa3?userId=1"
